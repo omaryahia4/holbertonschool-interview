@@ -5,7 +5,9 @@
 def minOperations(n):
     op = 0
     number = 2
-    if type(n) is not int or n <= 1:
+    if type(n) is not int:
+        return 0
+    if n <= 1:
         return op
     while n > 1:
         if n % number == 0:
