@@ -9,15 +9,17 @@ request(url, { json: true }, async (err, res, body) => {
     return err;
   }
   const characters = body.characters;
-  characters.map(async (character) => {
+  for (const character of characters) {
     await new Promise((resolve, reject) => {
       request.get(character, { json: true }, async (err, res, body) => {
         if (err) {
           reject(err);
         }
-        await console.log(body.name);
+        else {
+        await console.log(body.name)
         resolve();
+        }
       });
     });
-  });
+  };
 });
