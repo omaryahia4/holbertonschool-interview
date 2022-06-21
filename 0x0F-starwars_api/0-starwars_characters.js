@@ -2,7 +2,7 @@
 import request from 'request';
 
 const id = process.argv[2];
-const url = `https://swapi-api.hbtn.io/api/films/${id}`;
+const url = `https://swapi-api.hbtn.io/api/films/${id}/`;
 
 request(url, { json: true }, async (err, res, body) => {
   if (err) {
