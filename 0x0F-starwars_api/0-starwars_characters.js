@@ -14,12 +14,11 @@ request(url, { json: true }, async (err, res, body) => {
       request.get(character, { json: true }, async (err, res, body) => {
         if (err) {
           reject(err);
-        }
-        else {
-        await console.log(body.name)
-        resolve();
+        } else {
+          await console.log(body.name);
+          resolve();
         }
       });
     });
-  };
+  }
 });
