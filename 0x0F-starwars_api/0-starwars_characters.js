@@ -15,7 +15,7 @@ request(url, { json: true }, async (err, res, body) => {
         if (err) {
           reject(err);
         } else {
-          await console.log(body.name);
+          console.log(body.name);
           resolve();
         }
       });
