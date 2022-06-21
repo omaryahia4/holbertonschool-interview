@@ -9,9 +9,9 @@ request(url, { json: true }, async (err, res, body) => {
     return err;
   }
   const characters = body.characters;
-  for (const character of characters) {
+  for (const character in characters) {
     await new Promise((resolve, reject) => {
-      request.get(character, { json: true }, async (err, res, body) => {
+      request.get(characters[character], { json: true }, (err, res, body) => {
         if (err) {
           reject(err);
         } else {
