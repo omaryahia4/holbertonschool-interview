@@ -62,8 +62,8 @@ size_t i, j;
 	}
 
 /**
- * free - Function
- * @grid: the grid
+ * fre - Function that frees grid memory
+ * @grid: grid
  * Return: 0
  */
 
