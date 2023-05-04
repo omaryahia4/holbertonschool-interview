@@ -31,6 +31,7 @@ if __name__ == "__main__":
     count = 0
     try:
         for line in stdin:
+
             try:
                 data = line.split()
                 SIZE += int(data[-1])
@@ -38,6 +39,7 @@ if __name__ == "__main__":
                     STATUS_CODES[data[-2]] += 1
             except ValueError:
                 pass
+
             if count == 9:
                 print_stats()
                 count = -1
