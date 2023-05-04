@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-"""script reads from the standard input line by line and computes metrics."""
+"""Defines a script that reads stdin line by line and computes metrics"""
 
 from sys import stdin
 
@@ -20,7 +20,7 @@ SIZE = 0
 
 
 def print_stats():
-    """Prints the accumulated logs."""
+    """print metrics"""
     print(f"File size: {SIZE}")
     for status in sorted(STATUS_CODES.keys()):
         if STATUS_CODES[status] != 0:
