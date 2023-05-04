@@ -4,8 +4,7 @@
 
 from sys import stdin
 
-
-STATUS_CODES = {
+countStatus = {
     200: 0,
     301: 0,
     400: 0,
@@ -16,36 +15,38 @@ STATUS_CODES = {
     500: 0
 }
 
-SIZE = 0
+totalSize = 0
+countLine = 0
 
 
-def print_stats():
+def printStats():
     """print metrics"""
-    print(f"File size: {SIZE}")
-    for status in sorted(STATUS_CODES.keys()):
-        if STATUS_CODES[status] != 0:
-            print(f"{status}: {STATUS_CODES[status]}")
+    print('File size: {}'.format(totalSize))
+    for key in sorted(countStatus.keys()):
+        if countStatus[key] > 0:
+            print('{}: {}'.format(key, countStatus[key]))
 
 
 if __name__ == "__main__":
-    count = 0
+
     try:
         for line in stdin:
+            countLine += 1
 
             try:
-                data = line.split()
-                SIZE += int(data[-1])
-                if data[-2] in STATUS_CODES:
-                    STATUS_CODES[data[-2]] += 1
+                parse = line.split()
+                totalSize += int(parse[-1])
+                status = int(parse[-2])
+                countStatus[status] += 1
+
             except ValueError:
                 pass
 
-            if count == 9:
-                print_stats()
-                count = -1
-            count += 1
+            if countLine % 10 == 0:
+                printStats()
+
     except KeyboardInterrupt:
-        print_stats()
+        printStats()
         raise
 
-    print_stats()
+    printStats()
