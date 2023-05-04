@@ -1,10 +1,5 @@
 #!/usr/bin/python3
-"""
-This script reads from the standard input line by line and computes metrics.
-
-The metrics computed are the accumulated file size and
-the frequency of HTTP status codes.
-"""
+"""script reads from the standard input line by line and computes metrics."""
 
 from sys import stdin
 
@@ -24,9 +19,7 @@ SIZE = 0
 
 
 def print_stats():
-    """
-    Prints the accumulated logs.
-    """
+    """Prints the accumulated logs."""
     print(f"File size: {SIZE}")
     for status in sorted(STATUS_CODES.keys()):
         if STATUS_CODES[status] != 0:
@@ -42,7 +35,7 @@ if __name__ == "__main__":
                 SIZE += int(data[-1])
                 if data[-2] in STATUS_CODES:
                     STATUS_CODES[data[-2]] += 1
-            except:
+            except ValueError:
                 pass
             if count == 9:
                 print_stats()
